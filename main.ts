@@ -1,5 +1,7 @@
 enum OnOff {
+    //%block="on"
     On = 0,
+    //%block="off"
     Off = 1 
 }
 
