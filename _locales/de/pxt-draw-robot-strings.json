@@ -1,7 +1,7 @@
 {
     "drawrobot.drive|block": "fahre mit $left Umdrehungen links und $right Umdrehungen rechts",
     "drawrobot.power|block": "schalte Motoren $onoff",
-    "on|block": "an",
-    "off|block": "aus",
+    "OnOff.Off|block": "aus",
+    "OnOff.On|block": "an",
     "{id:category}Drawrobot": "Malroboter"
 }
