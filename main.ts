@@ -1,3 +1,8 @@
+enum OnOff {
+    On = 0,
+    Off = 1 
+}
+
 /**
  * Custom blocks
  */
@@ -26,16 +31,12 @@ namespace drawrobot {
     }
 
     //%block="switch motors to $onoff"
-    export function power(onoff: boolean) {
-        let val = 0;
-        if (!onoff) {
-            val = 1;
-        }
+    export function power(onoff: OnOff) {
         // IMPORTANT: buffer must correspond to application on arduino
         let powerCommand = pins.createBuffer(3);
         powerCommand.setNumber(NumberFormat.UInt8LE, 0, 35);  // 35 => #
         powerCommand.setNumber(NumberFormat.UInt8LE, 1, 80);  // 80 => P
-        powerCommand.setNumber(NumberFormat.UInt8LE, 2, val);
+        powerCommand.setNumber(NumberFormat.UInt8LE, 2, onoff);
         
         // send commend to the arduino with i2c_address=8
         pins.i2cWriteBuffer(
