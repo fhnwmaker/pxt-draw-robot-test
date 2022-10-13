@@ -10,7 +10,7 @@ enum OnOff {
  */
 //% weight=100 color=#ff8800 icon="\uf1fc"
 namespace drawrobot {
-    const I2C_ARDIUNO_ADDRESS = 8
+    const I2C_ARDUINO_ADDRESS = 8
 
     //%block="drive with $left revolutions left, and $right revolutions right"
     export function drive(left: number, right: number) {
@@ -24,7 +24,7 @@ namespace drawrobot {
         
         // send commend to the arduino with i2c_address=8
         pins.i2cWriteBuffer(
-            I2C_ARDIUNO_ADDRESS,
+            I2C_ARDUINO_ADDRESS,
             driveCommand,
             false
         )
@@ -43,7 +43,7 @@ namespace drawrobot {
         
         // send commend to the arduino with i2c_address=8
         pins.i2cWriteBuffer(
-            I2C_ARDIUNO_ADDRESS,
+            I2C_ARDUINO_ADDRESS,
             powerCommand,
             false
         )
@@ -53,10 +53,9 @@ namespace drawrobot {
     }
 
     function isRunning(): boolean {
-        let buffer = pins.createBuffer(2);
-        buffer = pins.i2cReadBuffer(I2C_ARDIUNO_ADDRESS, 2, false);
+        let buffer = pins.createBuffer(1);
+        buffer = pins.i2cReadBuffer(I2C_ARDUINO_ADDRESS, 1, false);
         let status = buffer.getNumber(NumberFormat.UInt8LE, 0);
-        let power = buffer.getNumber(NumberFormat.UInt8LE, 1);
         return (status == 1);
     }
 }
