@@ -1,8 +1,8 @@
 enum OnOff {
     //%block="on"
-    On = 0,
+    On = 1,
     //%block="off"
-    Off = 1 
+    Off = 0
 }
 
 /**
