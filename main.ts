@@ -47,6 +47,9 @@ namespace drawrobot {
             powerCommand,
             false
         )
+        while (isRunning()) {
+            basic.pause(20);
+        }
     }
 
     function isRunning(): boolean {
