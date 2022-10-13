@@ -28,6 +28,7 @@ namespace drawrobot {
             driveCommand,
             false
         )
+        basic.pause(20);
         while (isRunning()) {
             basic.pause(20);
         }
@@ -47,6 +48,7 @@ namespace drawrobot {
             powerCommand,
             false
         )
+        basic.pause(20);
         while (isRunning()) {
             basic.pause(20);
         }
