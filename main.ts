@@ -86,11 +86,13 @@ namespace drawrobot {
     //%block="set speed to $vel and acceleration to %accel"
     export function setup(vel: Vel, accel: Accel) {
         // IMPORTANT: buffer must correspond to application on arduino
-        let setupCommand = pins.createBuffer(4);
+        let setupCommand = pins.createBuffer(3);
+        // pack 'vel' and 'accel' into one byte
+        let msg = vel << 4;  // left shift 'vel' to the higher order bits
+        msg = msg + accel;  // add 'accel'
         setupCommand.setNumber(NumberFormat.UInt8LE, 0, 35);  // 35 => #
         setupCommand.setNumber(NumberFormat.UInt8LE, 1, 83);  // 83 => S
-        setupCommand.setNumber(NumberFormat.UInt8LE, 2, vel);
-        setupCommand.setNumber(NumberFormat.UInt8LE, 2, accel);
+        setupCommand.setNumber(NumberFormat.UInt8LE, 2, msg);
         
         // send commend to the arduino with i2c_address=8
         pins.i2cWriteBuffer(
