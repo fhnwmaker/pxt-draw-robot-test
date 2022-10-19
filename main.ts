@@ -57,7 +57,7 @@ namespace drawrobot {
         driveCommand.setNumber(NumberFormat.UInt32LE, 3, right*1000);
         driveCommand.setNumber(NumberFormat.UInt32LE, 7, left*1000);
         
-        // send commend to the arduino with i2c_address=8
+        // send commend to the arduino
         pins.i2cWriteBuffer(
             I2C_ARDUINO_ADDRESS,
             driveCommand,
@@ -74,7 +74,7 @@ namespace drawrobot {
         powerCommand.setNumber(NumberFormat.UInt8LE, 1, 80);  // 80 => P
         powerCommand.setNumber(NumberFormat.UInt8LE, 2, onoff);
         
-        // send commend to the arduino with i2c_address=8
+        // send commend to the arduino
         pins.i2cWriteBuffer(
             I2C_ARDUINO_ADDRESS,
             powerCommand,
@@ -93,8 +93,9 @@ namespace drawrobot {
         setupCommand.setNumber(NumberFormat.UInt8LE, 0, 35);  // 35 => #
         setupCommand.setNumber(NumberFormat.UInt8LE, 1, 83);  // 83 => S
         setupCommand.setNumber(NumberFormat.UInt8LE, 2, msg);
+        console.log(msg);
         
-        // send commend to the arduino with i2c_address=8
+        // send commend to the arduino
         pins.i2cWriteBuffer(
             I2C_ARDUINO_ADDRESS,
             setupCommand,
